@@ -3,16 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA256292471BD330078626B /* AppDelegate.swift */; };
 		CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2562B2471BD330078626B /* SceneDelegate.swift */; };
-		CEA2562E2471BD330078626B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2562D2471BD330078626B /* ViewController.swift */; };
 		CEA256312471BD330078626B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA2562F2471BD330078626B /* Main.storyboard */; };
 		CEA256332471BD3A0078626B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA256322471BD3A0078626B /* Assets.xcassets */; };
 		CEA256362471BD3A0078626B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA256342471BD3A0078626B /* LaunchScreen.storyboard */; };
+		CEA2563E247465E50078626B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2563D247465E50078626B /* AuthenticationViewController.swift */; };
 		E64A09655BC23823474D52AD /* Pods_GitHubApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8419E22B280D47F756E36D05 /* Pods_GitHubApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,11 +23,11 @@
 		CEA256262471BD330078626B /* GitHubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA256292471BD330078626B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA2562B2471BD330078626B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEA2562D2471BD330078626B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEA256302471BD330078626B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEA256322471BD3A0078626B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEA256352471BD3A0078626B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEA256372471BD3A0078626B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEA2563D247465E50078626B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationViewController.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/AuthenticationViewController.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +71,9 @@
 		CEA256282471BD330078626B /* GitHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				CEA2563D247465E50078626B /* AuthenticationViewController.swift */,
 				CEA256292471BD330078626B /* AppDelegate.swift */,
 				CEA2562B2471BD330078626B /* SceneDelegate.swift */,
-				CEA2562D2471BD330078626B /* ViewController.swift */,
 				CEA2562F2471BD330078626B /* Main.storyboard */,
 				CEA256322471BD3A0078626B /* Assets.xcassets */,
 				CEA256342471BD3A0078626B /* LaunchScreen.storyboard */,
@@ -88,7 +88,6 @@
 				A467A5E0CEBC543754687301 /* Pods-GitHubApp.debug.xcconfig */,
 				A766C3CE1CCC02725C8AAF69 /* Pods-GitHubApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -207,7 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEA2562E2471BD330078626B /* ViewController.swift in Sources */,
+				CEA2563E247465E50078626B /* AuthenticationViewController.swift in Sources */,
 				CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */,
 				CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */,
 			);
