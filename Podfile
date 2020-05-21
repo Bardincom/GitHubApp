@@ -3,6 +3,6 @@ use_frameworks!
 
 target 'GitHubApp' do
 
-  pod 'Kingfisher', '~> 4.9'
+  pod 'Kingfisher', '~> 5.14.0'
   pod 'SnapKit'
 end
