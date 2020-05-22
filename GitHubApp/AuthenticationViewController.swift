@@ -10,38 +10,47 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class AuthenticationViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+final class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     
-    let logoImage: UIImageView = {
+    private let logoImage: UIImageView = {
         let myUrl = URL(string: "https://mainacademy.ua/wp-content/uploads/2019/02/github-logo.png")
         let logoImage = UIImageView()
         logoImage.kf.setImage(with: myUrl)
-       
+        
         return logoImage
     }()
     
-    let loginText: UITextField = {
+    private let loginText: UITextField = {
         let loginText = UITextField()
         loginText.layer.borderWidth = 1
         loginText.layer.borderColor = UIColor.gray.cgColor
         loginText.layer.cornerRadius = 6
-        loginText.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        loginText.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: loginText.frame.height))
+        loginText.attributedPlaceholder = NSAttributedString(string: "username",
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        loginText.leftView = UIView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: 10,
+                                                  height: loginText.frame.height))
         loginText.leftViewMode = .always
-        loginText.font = UIFont(name: "AvenirNext-Medium", size: 20)
+        loginText.font = UIFont(name: "AvenirNext-Medium",
+                                size: 20)
         loginText.autocorrectionType = .no
         loginText.clearsOnBeginEditing = true
-       
+        
         return loginText
     }()
     
-    let passwordText: UITextField = {
+    private let passwordText: UITextField = {
         let passwordText = UITextField()
         passwordText.layer.borderWidth = 1
         passwordText.layer.borderColor = UIColor.gray.cgColor
         passwordText.layer.cornerRadius = 6
-        passwordText.attributedPlaceholder = NSAttributedString(string: "password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        passwordText.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: passwordText.frame.height))
+        passwordText.attributedPlaceholder = NSAttributedString(string: "password",
+                                                                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passwordText.leftView = UIView(frame: CGRect(x: 0,
+                                                     y: 0,
+                                                     width: 10,
+                                                     height: passwordText.frame.height))
         passwordText.leftViewMode = .always
         passwordText.font = UIFont(name: "AvenirNext-Medium", size: 20)
         passwordText.autocorrectionType = .no
@@ -51,7 +60,7 @@ class AuthenticationViewController: UIViewController, UITextViewDelegate, UIText
         return passwordText
     }()
     
-    let loginButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Login", for: .normal)
         button.titleLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
@@ -60,40 +69,55 @@ class AuthenticationViewController: UIViewController, UITextViewDelegate, UIText
         
         return button
     }()
-
     
     override  func viewDidLoad() {
         super.viewDidLoad()
         
-        setKeyboardNotification()
+        if UIScreen.main.bounds.size.height <= 667 {
+            setKeyboardNotification()
+        }
+        
         addSubviews()
         setupLayout()
         self.passwordText.delegate = self
         self.loginText.delegate = self
-  }
+        
+        let gestureView = UITapGestureRecognizer(target: self, action: #selector(tapRootView(_:)))
+        view.addGestureRecognizer(gestureView)
+    }
     
     func setKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= keyboardSize.height
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return false
+    }
+    
+    @objc func tapRootView(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }
 
@@ -108,7 +132,7 @@ extension AuthenticationViewController {
     
     private func setupLayout() {
         logoImage.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(160)
+            $0.top.equalToSuperview().offset(190)
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(120)
@@ -133,6 +157,7 @@ extension AuthenticationViewController {
             $0.leading.equalToSuperview().offset(30)
             $0.trailing.equalToSuperview().offset(-30)
             $0.height.equalTo(50)
+            
         }
     }
 }
