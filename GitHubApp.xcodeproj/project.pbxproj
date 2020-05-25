@@ -13,6 +13,7 @@
 		CEA256332471BD3A0078626B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA256322471BD3A0078626B /* Assets.xcassets */; };
 		CEA256362471BD3A0078626B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA256342471BD3A0078626B /* LaunchScreen.storyboard */; };
 		CEA2563E247465E50078626B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2563D247465E50078626B /* AuthenticationViewController.swift */; };
+		CEC277F7247BF031002D83F2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC277F6247BF031002D83F2 /* Helpers.swift */; };
 		E64A09655BC23823474D52AD /* Pods_GitHubApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8419E22B280D47F756E36D05 /* Pods_GitHubApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		CEA256352471BD3A0078626B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEA256372471BD3A0078626B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEA2563D247465E50078626B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationViewController.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/AuthenticationViewController.swift; sourceTree = "<absolute>"; };
+		CEC277F6247BF031002D83F2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Helpers.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/Helpers.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				CEA2563D247465E50078626B /* AuthenticationViewController.swift */,
 				CEA256292471BD330078626B /* AppDelegate.swift */,
 				CEA2562B2471BD330078626B /* SceneDelegate.swift */,
+				CEC277F6247BF031002D83F2 /* Helpers.swift */,
 				CEA2562F2471BD330078626B /* Main.storyboard */,
 				CEA256322471BD3A0078626B /* Assets.xcassets */,
 				CEA256342471BD3A0078626B /* LaunchScreen.storyboard */,
@@ -209,6 +212,7 @@
 				CEA2563E247465E50078626B /* AuthenticationViewController.swift in Sources */,
 				CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */,
 				CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */,
+				CEC277F7247BF031002D83F2 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

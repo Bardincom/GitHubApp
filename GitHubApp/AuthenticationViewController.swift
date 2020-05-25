@@ -13,9 +13,9 @@ import Kingfisher
 final class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     
     private let logoImage: UIImageView = {
-        let myUrl = URL(string: "https://mainacademy.ua/wp-content/uploads/2019/02/github-logo.png")
+        let gitUrl = URL(string: "https://mainacademy.ua/wp-content/uploads/2019/02/github-logo.png")
         let logoImage = UIImageView()
-        logoImage.kf.setImage(with: myUrl)
+        logoImage.kf.setImage(with: gitUrl)
         
         return logoImage
     }()
@@ -73,7 +73,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     override  func viewDidLoad() {
         super.viewDidLoad()
         
-        if UIScreen.main.bounds.size.height <= 667 {
+        if UIScreen.main.bounds.size.height <= screenheight {
             setKeyboardNotification()
         }
         
@@ -132,31 +132,31 @@ extension AuthenticationViewController {
     
     private func setupLayout() {
         logoImage.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(190)
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalToSuperview().offset(-20)
-            $0.height.equalTo(120)
+            $0.top.equalToSuperview().offset(logoTopOffset)
+            $0.leading.equalToSuperview().offset(logoLeftOffset)
+            $0.trailing.equalToSuperview().offset(logoRightOffset)
+            $0.height.equalTo(logoHeight)
         }
         
         loginText.snp.makeConstraints {
-            $0.top.equalTo(logoImage.snp.bottom).offset(50)
-            $0.leading.equalToSuperview().offset(30)
-            $0.trailing.equalToSuperview().offset(-30)
-            $0.height.equalTo(45)
+            $0.top.equalTo(logoImage.snp.bottom).offset(logoBottomOffset)
+            $0.leading.equalToSuperview().offset(leftOffset)
+            $0.trailing.equalToSuperview().offset(rightOffset)
+            $0.height.equalTo(textFieldHeight)
         }
         
         passwordText.snp.makeConstraints {
-            $0.top.equalTo(loginText.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().offset(30)
-            $0.trailing.equalToSuperview().offset(-30)
-            $0.height.equalTo(45)
+            $0.top.equalTo(loginText.snp.bottom).offset(loginTextFieldBottomOffset)
+            $0.leading.equalToSuperview().offset(leftOffset)
+            $0.trailing.equalToSuperview().offset(rightOffset)
+            $0.height.equalTo(textFieldHeight)
         }
         
         loginButton.snp.makeConstraints {
-            $0.top.equalTo(passwordText.snp.bottom).offset(30)
-            $0.leading.equalToSuperview().offset(30)
-            $0.trailing.equalToSuperview().offset(-30)
-            $0.height.equalTo(50)
+            $0.top.equalTo(passwordText.snp.bottom).offset(passwordTextFieldBottomOffset)
+            $0.leading.equalToSuperview().offset(leftOffset)
+            $0.trailing.equalToSuperview().offset(rightOffset)
+            $0.height.equalTo(buttonHeight)
             
         }
     }
