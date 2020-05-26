@@ -1,8 +1,8 @@
 //
-//  AuthenticationViewController.swift
-//  
+//  ProfileViewController.swift
 //
-//  Created by Polina on 19.05.2020.
+//
+//  Created by Polina on 26.05.2020.
 //
 
 import Foundation
@@ -10,12 +10,15 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class AuthenticationViewController: UIViewController, UITextFieldDelegate {
+final class ProfileViewController: UIViewController, UITextFieldDelegate  {
     
     private let logoImage: UIImageView = {
-        let gitUrl = URL(string: "https://mainacademy.ua/wp-content/uploads/2019/02/github-logo.png")
         let logoImage = UIImageView()
+        logoImage.layer.cornerRadius = 65
+        logoImage.clipsToBounds = true
+        let gitUrl = URL(string: "https://beg.moscow/wp-content/uploads/2018/08/Avatar-300x300.png")
         logoImage.kf.setImage(with: gitUrl)
+        
         
         return logoImage
     }()
@@ -25,7 +28,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         loginText.layer.borderWidth = 1
         loginText.layer.borderColor = UIColor.gray.cgColor
         loginText.layer.cornerRadius = 6
-        loginText.attributedPlaceholder = NSAttributedString(string: "username",
+        loginText.attributedPlaceholder = NSAttributedString(string: "repository username",
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         loginText.leftView = UIView(frame: CGRect(x: 0,
                                                   y: 0,
@@ -45,7 +48,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         passwordText.layer.borderWidth = 1
         passwordText.layer.borderColor = UIColor.gray.cgColor
         passwordText.layer.cornerRadius = 6
-        passwordText.attributedPlaceholder = NSAttributedString(string: "password",
+        passwordText.attributedPlaceholder = NSAttributedString(string: "language",
                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passwordText.leftView = UIView(frame: CGRect(x: 0,
                                                      y: 0,
@@ -54,19 +57,54 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         passwordText.leftViewMode = .always
         passwordText.font = UIFont(name: font, size: 20)
         passwordText.autocorrectionType = .no
-        passwordText.isSecureTextEntry = true
         passwordText.clearsOnBeginEditing = true
         
         return passwordText
     }()
     
-    private let loginButton: UIButton = {
+    private let helloLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .white
+        label.text = "Hello!"
+        label.textAlignment = .center
+        label.font = UIFont(name: font, size: 35)
+        label.numberOfLines = 1
+        label.textColor = .black
+        
+        return label
+    }()
+    
+    private let searchLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .white
+        label.text = "Search repository"
+        label.textAlignment = .center
+        label.font = UIFont(name: font, size: 30)
+        label.numberOfLines = 1
+        label.textColor = .black
+        
+        return label
+    }()
+    
+    private let segmentView: UISegmentedControl = {
+        let segment = UISegmentedControl(items: ["ascended", "descended"])
+        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black,
+                                        NSAttributedString.Key.font: UIFont(name: font, size: 17) as Any], for: .selected)
+        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
+                                        NSAttributedString.Key.font: UIFont(name: font, size: 17) as Any], for: .normal)
+        segment.backgroundColor = .lightGray
+        
+        segment.layer.cornerRadius = 5
+        
+        return segment
+    }()
+    
+    private let searchButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Start search", for: .normal)
         button.titleLabel?.font = UIFont(name: font, size: 20)
         button.backgroundColor = .black
         button.layer.cornerRadius = 6
-        button.addTarget(self, action: #selector(switchToProfileViewController(parametrSender:)), for: .touchUpInside)
         
         return button
     }()
@@ -74,9 +112,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     override  func viewDidLoad() {
         super.viewDidLoad()
         
-        if UIScreen.main.bounds.size.height <= screenheight {
-            setKeyboardNotification()
-        }
+setKeyboardNotification()
         
         addSubviews()
         setupLayout()
@@ -120,33 +156,44 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     @objc func tapRootView(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    
-    @objc func switchToProfileViewController(parametrSender: Any) {
-        let profile = ProfileViewController()
-        self.navigationController?.pushViewController(profile, animated:  false)
-        
-    }
 }
 
-extension AuthenticationViewController {
+extension ProfileViewController {
     
     private func addSubviews() {
+        self.view.addSubview(helloLabel)
         self.view.addSubview(logoImage)
         self.view.addSubview(loginText)
         self.view.addSubview(passwordText)
-        self.view.addSubview(loginButton)
+        self.view.addSubview(searchButton)
+        self.view.addSubview(searchLabel)
+        self.view.addSubview(segmentView)
     }
     
     private func setupLayout() {
+        helloLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(110)
+            $0.leading.equalToSuperview().offset(70)
+            $0.trailing.equalToSuperview().offset(-70)
+            $0.height.equalTo(40)
+        }
+        
         logoImage.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(logoTopOffset)
-            $0.leading.equalToSuperview().offset(logoLeftOffset)
-            $0.trailing.equalToSuperview().offset(logoRightOffset)
-            $0.height.equalTo(logoHeight)
+            $0.top.equalTo(helloLabel.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(122)
+            $0.trailing.equalToSuperview().offset(-122)
+            $0.height.equalTo(130)
+        }
+        
+        searchLabel.snp.makeConstraints {
+            $0.top.equalTo(logoImage.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(50)
+            $0.trailing.equalToSuperview().offset(-50)
+            $0.height.equalTo(40)
         }
         
         loginText.snp.makeConstraints {
-            $0.top.equalTo(logoImage.snp.bottom).offset(logoBottomOffset)
+            $0.top.equalTo(searchLabel.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(leftOffset)
             $0.trailing.equalToSuperview().offset(rightOffset)
             $0.height.equalTo(textFieldHeight)
@@ -159,14 +206,20 @@ extension AuthenticationViewController {
             $0.height.equalTo(textFieldHeight)
         }
         
-        loginButton.snp.makeConstraints {
-            $0.top.equalTo(passwordText.snp.bottom).offset(passwordTextFieldBottomOffset)
+        segmentView.snp.makeConstraints {
+            $0.top.equalTo(passwordText.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(leftOffset)
+            $0.trailing.equalToSuperview().offset(rightOffset)
+            $0.height.equalTo(textFieldHeight)
+        }
+        
+        searchButton.snp.makeConstraints {
+            $0.top.equalTo(segmentView.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(leftOffset)
             $0.trailing.equalToSuperview().offset(rightOffset)
             $0.height.equalTo(buttonHeight)
             
         }
+        
     }
 }
-
-

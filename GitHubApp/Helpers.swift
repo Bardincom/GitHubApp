@@ -25,3 +25,5 @@ let passwordTextFieldBottomOffset = 30
 let textFieldHeight = 45
 
 let buttonHeight = 50
+
+let font = "AvenirNext-Medium"

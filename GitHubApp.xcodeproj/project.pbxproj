@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE16C6A3247D8449008C492F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16C6A2247D8449008C492F /* ProfileViewController.swift */; };
+		CE268D8B247D9EB500D8CE78 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE268D8A247D9EB500D8CE78 /* Keyboard.swift */; };
 		CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA256292471BD330078626B /* AppDelegate.swift */; };
 		CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2562B2471BD330078626B /* SceneDelegate.swift */; };
 		CEA256312471BD330078626B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA2562F2471BD330078626B /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 		8419E22B280D47F756E36D05 /* Pods_GitHubApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A467A5E0CEBC543754687301 /* Pods-GitHubApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubApp.debug.xcconfig"; path = "Target Support Files/Pods-GitHubApp/Pods-GitHubApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A766C3CE1CCC02725C8AAF69 /* Pods-GitHubApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubApp.release.xcconfig"; path = "Target Support Files/Pods-GitHubApp/Pods-GitHubApp.release.xcconfig"; sourceTree = "<group>"; };
+		CE16C6A2247D8449008C492F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/ProfileViewController.swift; sourceTree = "<absolute>"; };
+		CE268D8A247D9EB500D8CE78 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keyboard.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/Keyboard.swift; sourceTree = "<absolute>"; };
 		CEA256262471BD330078626B /* GitHubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA256292471BD330078626B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA2562B2471BD330078626B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,9 +78,11 @@
 			isa = PBXGroup;
 			children = (
 				CEA2563D247465E50078626B /* AuthenticationViewController.swift */,
+				CE16C6A2247D8449008C492F /* ProfileViewController.swift */,
 				CEA256292471BD330078626B /* AppDelegate.swift */,
 				CEA2562B2471BD330078626B /* SceneDelegate.swift */,
 				CEC277F6247BF031002D83F2 /* Helpers.swift */,
+				CE268D8A247D9EB500D8CE78 /* Keyboard.swift */,
 				CEA2562F2471BD330078626B /* Main.storyboard */,
 				CEA256322471BD3A0078626B /* Assets.xcassets */,
 				CEA256342471BD3A0078626B /* LaunchScreen.storyboard */,
@@ -209,9 +215,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE16C6A3247D8449008C492F /* ProfileViewController.swift in Sources */,
 				CEA2563E247465E50078626B /* AuthenticationViewController.swift in Sources */,
 				CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */,
 				CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */,
+				CE268D8B247D9EB500D8CE78 /* Keyboard.swift in Sources */,
 				CEC277F7247BF031002D83F2 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
