@@ -14,52 +14,52 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
     
     private let logoImage: UIImageView = {
         let logoImage = UIImageView()
-        logoImage.layer.cornerRadius = 65
+        logoImage.layer.cornerRadius = logoImage.bounds.height / 2
         logoImage.clipsToBounds = true
-        let gitUrl = URL(string: "https://beg.moscow/wp-content/uploads/2018/08/Avatar-300x300.png")
+        let gitUrl = URL(string: "https://www.freepngimg.com/download/github/3-2-github-png-image.png")
         logoImage.kf.setImage(with: gitUrl)
         
         
         return logoImage
     }()
     
-    private let loginText: UITextField = {
-        let loginText = UITextField()
-        loginText.layer.borderWidth = 1
-        loginText.layer.borderColor = UIColor.gray.cgColor
-        loginText.layer.cornerRadius = 6
-        loginText.attributedPlaceholder = NSAttributedString(string: "repository username",
+     let repositoryText: UITextField = {
+        let repositoryText = UITextField()
+        repositoryText.layer.borderWidth = 1
+        repositoryText.layer.borderColor = UIColor.gray.cgColor
+        repositoryText.layer.cornerRadius = 6
+        repositoryText.attributedPlaceholder = NSAttributedString(string: "repository name",
                                                              attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        loginText.leftView = UIView(frame: CGRect(x: 0,
+        repositoryText.leftView = UIView(frame: CGRect(x: 0,
                                                   y: 0,
                                                   width: 10,
-                                                  height: loginText.frame.height))
-        loginText.leftViewMode = .always
-        loginText.font = UIFont(name: font,
+                                                  height: repositoryText.frame.height))
+        repositoryText.leftViewMode = .always
+        repositoryText.font = UIFont(name: font,
                                 size: 20)
-        loginText.autocorrectionType = .no
-        loginText.clearsOnBeginEditing = true
+        repositoryText.autocorrectionType = .no
+        repositoryText.clearsOnBeginEditing = true
         
-        return loginText
+        return repositoryText
     }()
     
-    private let passwordText: UITextField = {
-        let passwordText = UITextField()
-        passwordText.layer.borderWidth = 1
-        passwordText.layer.borderColor = UIColor.gray.cgColor
-        passwordText.layer.cornerRadius = 6
-        passwordText.attributedPlaceholder = NSAttributedString(string: "language",
+     let languageText: UITextField = {
+        let languageText = UITextField()
+        languageText.layer.borderWidth = 1
+        languageText.layer.borderColor = UIColor.gray.cgColor
+        languageText.layer.cornerRadius = 6
+        languageText.attributedPlaceholder = NSAttributedString(string: "language",
                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        passwordText.leftView = UIView(frame: CGRect(x: 0,
+        languageText.leftView = UIView(frame: CGRect(x: 0,
                                                      y: 0,
                                                      width: 10,
-                                                     height: passwordText.frame.height))
-        passwordText.leftViewMode = .always
-        passwordText.font = UIFont(name: font, size: 20)
-        passwordText.autocorrectionType = .no
-        passwordText.clearsOnBeginEditing = true
+                                                     height: languageText.frame.height))
+        languageText.leftViewMode = .always
+        languageText.font = UIFont(name: font, size: 20)
+        languageText.autocorrectionType = .no
+        languageText.clearsOnBeginEditing = true
         
-        return passwordText
+        return languageText
     }()
     
     private let helloLabel: UILabel = {
@@ -86,15 +86,15 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
         return label
     }()
     
-    private let segmentView: UISegmentedControl = {
+    let segmentView: UISegmentedControl = {
         let segment = UISegmentedControl(items: ["ascended", "descended"])
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black,
                                         NSAttributedString.Key.font: UIFont(name: font, size: 17) as Any], for: .selected)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
                                         NSAttributedString.Key.font: UIFont(name: font, size: 17) as Any], for: .normal)
         segment.backgroundColor = .lightGray
-        
         segment.layer.cornerRadius = 5
+        segment.selectedSegmentIndex = 0
         
         return segment
     }()
@@ -105,6 +105,7 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
         button.titleLabel?.font = UIFont(name: font, size: 20)
         button.backgroundColor = .black
         button.layer.cornerRadius = 6
+        button.addTarget(self, action: #selector(tapSearchButton), for: .touchUpInside)
         
         return button
     }()
@@ -112,12 +113,14 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
     override  func viewDidLoad() {
         super.viewDidLoad()
         
-setKeyboardNotification()
+        if UIScreen.main.bounds.size.height <= screenheight {
+            setKeyboardNotification()
+        }
         
         addSubviews()
         setupLayout()
-        self.passwordText.delegate = self
-        self.loginText.delegate = self
+        self.languageText.delegate = self
+        self.repositoryText.delegate = self
         
         let gestureView = UITapGestureRecognizer(target: self, action: #selector(tapRootView(_:)))
         view.addGestureRecognizer(gestureView)
@@ -136,15 +139,15 @@ setKeyboardNotification()
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
+            if view.frame.origin.y == .zero {
                 view.frame.origin.y -= keyboardSize.height
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if view.frame.origin.y != 0 {
-            view.frame.origin.y = 0
+        if view.frame.origin.y != .zero {
+            view.frame.origin.y = .zero
         }
     }
     
@@ -156,6 +159,11 @@ setKeyboardNotification()
     @objc func tapRootView(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    
+    @objc func tapSearchButton() {
+        print("sdsds")
+        searchRepo()
+    }
 }
 
 extension ProfileViewController {
@@ -163,8 +171,8 @@ extension ProfileViewController {
     private func addSubviews() {
         self.view.addSubview(helloLabel)
         self.view.addSubview(logoImage)
-        self.view.addSubview(loginText)
-        self.view.addSubview(passwordText)
+        self.view.addSubview(repositoryText)
+        self.view.addSubview(languageText)
         self.view.addSubview(searchButton)
         self.view.addSubview(searchLabel)
         self.view.addSubview(segmentView)
@@ -179,35 +187,35 @@ extension ProfileViewController {
         }
         
         logoImage.snp.makeConstraints {
-            $0.top.equalTo(helloLabel.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().offset(122)
-            $0.trailing.equalToSuperview().offset(-122)
-            $0.height.equalTo(130)
+            $0.top.equalTo(helloLabel.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(110)
+            $0.width.equalTo(110)
         }
         
         searchLabel.snp.makeConstraints {
-            $0.top.equalTo(logoImage.snp.bottom).offset(15)
+            $0.top.equalTo(logoImage.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(50)
             $0.trailing.equalToSuperview().offset(-50)
             $0.height.equalTo(40)
         }
         
-        loginText.snp.makeConstraints {
-            $0.top.equalTo(searchLabel.snp.bottom).offset(20)
+        repositoryText.snp.makeConstraints {
+            $0.top.equalTo(searchLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(leftOffset)
             $0.trailing.equalToSuperview().offset(rightOffset)
             $0.height.equalTo(textFieldHeight)
         }
         
-        passwordText.snp.makeConstraints {
-            $0.top.equalTo(loginText.snp.bottom).offset(loginTextFieldBottomOffset)
+        languageText.snp.makeConstraints {
+            $0.top.equalTo(repositoryText.snp.bottom).offset(loginTextFieldBottomOffset)
             $0.leading.equalToSuperview().offset(leftOffset)
             $0.trailing.equalToSuperview().offset(rightOffset)
             $0.height.equalTo(textFieldHeight)
         }
         
         segmentView.snp.makeConstraints {
-            $0.top.equalTo(passwordText.snp.bottom).offset(20)
+            $0.top.equalTo(languageText.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(leftOffset)
             $0.trailing.equalToSuperview().offset(rightOffset)
             $0.height.equalTo(textFieldHeight)

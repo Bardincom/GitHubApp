@@ -100,15 +100,15 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
+            if view.frame.origin.y == .zero {
                 view.frame.origin.y -= keyboardSize.height
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if view.frame.origin.y != 0 {
-            view.frame.origin.y = 0
+        if view.frame.origin.y != .zero {
+            view.frame.origin.y = .zero
         }
     }
     
