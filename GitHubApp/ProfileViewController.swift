@@ -19,7 +19,6 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
         let gitUrl = URL(string: "https://www.freepngimg.com/download/github/3-2-github-png-image.png")
         logoImage.kf.setImage(with: gitUrl)
         
-        
         return logoImage
     }()
     
@@ -35,8 +34,7 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
                                                   width: 10,
                                                   height: repositoryText.frame.height))
         repositoryText.leftViewMode = .always
-        repositoryText.font = UIFont(name: font,
-                                size: 20)
+        repositoryText.font = UIFont(name: avenirFont, size: 20)
         repositoryText.autocorrectionType = .no
         repositoryText.clearsOnBeginEditing = true
         
@@ -55,7 +53,7 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
                                                      width: 10,
                                                      height: languageText.frame.height))
         languageText.leftViewMode = .always
-        languageText.font = UIFont(name: font, size: 20)
+        languageText.font = UIFont(name: avenirFont, size: 20)
         languageText.autocorrectionType = .no
         languageText.clearsOnBeginEditing = true
         
@@ -67,7 +65,7 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
         label.backgroundColor = .white
         label.text = "Hello!"
         label.textAlignment = .center
-        label.font = UIFont(name: font, size: 35)
+        label.font = UIFont(name: avenirFont, size: 35)
         label.numberOfLines = 1
         label.textColor = .black
         
@@ -79,7 +77,7 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
         label.backgroundColor = .white
         label.text = "Search repository"
         label.textAlignment = .center
-        label.font = UIFont(name: font, size: 30)
+        label.font = UIFont(name: avenirFont, size: 30)
         label.numberOfLines = 1
         label.textColor = .black
         
@@ -89,9 +87,9 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
     let segmentView: UISegmentedControl = {
         let segment = UISegmentedControl(items: ["ascended", "descended"])
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black,
-                                        NSAttributedString.Key.font: UIFont(name: font, size: 17) as Any], for: .selected)
+                                        NSAttributedString.Key.font: UIFont(name: avenirFont, size: 17) as Any], for: .selected)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
-                                        NSAttributedString.Key.font: UIFont(name: font, size: 17) as Any], for: .normal)
+                                        NSAttributedString.Key.font: UIFont(name: avenirFont, size: 17) as Any], for: .normal)
         segment.backgroundColor = .lightGray
         segment.layer.cornerRadius = 5
         segment.selectedSegmentIndex = 0
@@ -102,7 +100,7 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
     private let searchButton: UIButton = {
         let button = UIButton()
         button.setTitle("Start search", for: .normal)
-        button.titleLabel?.font = UIFont(name: font, size: 20)
+        button.titleLabel?.font = UIFont(name: avenirFont, size: 20)
         button.backgroundColor = .black
         button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(tapSearchButton), for: .touchUpInside)
@@ -160,9 +158,9 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
         view.endEditing(true)
     }
     
-    @objc func tapSearchButton() {
-        print("sdsds")
-        searchRepo()
+    @objc func tapSearchButton(parametrSender: Any) {
+    let repo = RepoTableViewController()
+    self.navigationController?.pushViewController(repo, animated:  false)
     }
 }
 
@@ -189,8 +187,7 @@ extension ProfileViewController {
         logoImage.snp.makeConstraints {
             $0.top.equalTo(helloLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(110)
-            $0.width.equalTo(110)
+            $0.height.width.equalTo(110)
         }
         
         searchLabel.snp.makeConstraints {

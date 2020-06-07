@@ -32,7 +32,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
                                                   width: 10,
                                                   height: loginText.frame.height))
         loginText.leftViewMode = .always
-        loginText.font = UIFont(name: font,
+        loginText.font = UIFont(name: avenirFont,
                                 size: 20)
         loginText.autocorrectionType = .no
         loginText.clearsOnBeginEditing = true
@@ -52,7 +52,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
                                                      width: 10,
                                                      height: passwordText.frame.height))
         passwordText.leftViewMode = .always
-        passwordText.font = UIFont(name: font, size: 20)
+        passwordText.font = UIFont(name: avenirFont, size: 20)
         passwordText.autocorrectionType = .no
         passwordText.isSecureTextEntry = true
         passwordText.clearsOnBeginEditing = true
@@ -63,7 +63,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Login", for: .normal)
-        button.titleLabel?.font = UIFont(name: font, size: 20)
+        button.titleLabel?.font = UIFont(name: avenirFont, size: 20)
         button.backgroundColor = .black
         button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(switchToProfileViewController(parametrSender:)), for: .touchUpInside)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1513C0248A88900090D675 /* RepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1513BF248A88900090D675 /* RepoTableViewController.swift */; };
+		CE7A9C0F248AB77000E7AA5F /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A9C0E248AB77000E7AA5F /* RepoTableViewCell.swift */; };
 		CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA256292471BD330078626B /* AppDelegate.swift */; };
 		CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2562B2471BD330078626B /* SceneDelegate.swift */; };
 		CEA256312471BD330078626B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA2562F2471BD330078626B /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		8419E22B280D47F756E36D05 /* Pods_GitHubApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A467A5E0CEBC543754687301 /* Pods-GitHubApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubApp.debug.xcconfig"; path = "Target Support Files/Pods-GitHubApp/Pods-GitHubApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A766C3CE1CCC02725C8AAF69 /* Pods-GitHubApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubApp.release.xcconfig"; path = "Target Support Files/Pods-GitHubApp/Pods-GitHubApp.release.xcconfig"; sourceTree = "<group>"; };
+		CE1513BF248A88900090D675 /* RepoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewController.swift; sourceTree = "<group>"; };
+		CE7A9C0E248AB77000E7AA5F /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
 		CEA256262471BD330078626B /* GitHubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA256292471BD330078626B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA2562B2471BD330078626B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 		CEA256282471BD330078626B /* GitHubApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE1513BF248A88900090D675 /* RepoTableViewController.swift */,
+				CE7A9C0E248AB77000E7AA5F /* RepoTableViewCell.swift */,
 				CEFEF043248586AD00E61E80 /* ProfileViewController.swift */,
 				CEFEF0472485885400E61E80 /* ProfileViewController Extension.swift */,
 				CEA2563D247465E50078626B /* AuthenticationViewController.swift */,
@@ -215,8 +221,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1513C0248A88900090D675 /* RepoTableViewController.swift in Sources */,
 				CEA2563E247465E50078626B /* AuthenticationViewController.swift in Sources */,
 				CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */,
+				CE7A9C0F248AB77000E7AA5F /* RepoTableViewCell.swift in Sources */,
 				CEFEF044248586AD00E61E80 /* ProfileViewController.swift in Sources */,
 				CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */,
 				CEC277F7247BF031002D83F2 /* Helpers.swift in Sources */,

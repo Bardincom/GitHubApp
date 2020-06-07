@@ -26,4 +26,5 @@ let textFieldHeight = 45
 
 let buttonHeight = 50
 
-let font = "AvenirNext-Medium"
+let avenirFont = "AvenirNext-Medium"
+let avenirBoldFont = "AvenirNext-Bold"
