@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class ProfileViewController: UIViewController, UITextFieldDelegate  {
+final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
     
     private let logoImage: UIImageView = {
         let logoImage = UIImageView()
@@ -22,17 +22,17 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
         return logoImage
     }()
     
-     let repositoryText: UITextField = {
+    let repositoryText: UITextField = {
         let repositoryText = UITextField()
         repositoryText.layer.borderWidth = 1
         repositoryText.layer.borderColor = UIColor.gray.cgColor
         repositoryText.layer.cornerRadius = 6
         repositoryText.attributedPlaceholder = NSAttributedString(string: "repository name",
-                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         repositoryText.leftView = UIView(frame: CGRect(x: 0,
-                                                  y: 0,
-                                                  width: 10,
-                                                  height: repositoryText.frame.height))
+                                                       y: 0,
+                                                       width: 10,
+                                                       height: repositoryText.frame.height))
         repositoryText.leftViewMode = .always
         repositoryText.font = UIFont(name: avenirFont, size: 20)
         repositoryText.autocorrectionType = .no
@@ -41,7 +41,7 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
         return repositoryText
     }()
     
-     let languageText: UITextField = {
+    let languageText: UITextField = {
         let languageText = UITextField()
         languageText.layer.borderWidth = 1
         languageText.layer.borderColor = UIColor.gray.cgColor
@@ -159,12 +159,11 @@ final class ProfileViewController: UIViewController, UITextFieldDelegate  {
     }
     
     @objc func tapSearchButton(parametrSender: Any) {
-    let repo = RepoTableViewController()
-    self.navigationController?.pushViewController(repo, animated:  false)
+        searchRepo()
     }
 }
 
-extension ProfileViewController {
+extension RepositorySearchController {
     
     private func addSubviews() {
         self.view.addSubview(helloLabel)
@@ -223,8 +222,6 @@ extension ProfileViewController {
             $0.leading.equalToSuperview().offset(leftOffset)
             $0.trailing.equalToSuperview().offset(rightOffset)
             $0.height.equalTo(buttonHeight)
-            
         }
-        
     }
 }

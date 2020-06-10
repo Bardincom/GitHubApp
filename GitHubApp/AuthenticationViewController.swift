@@ -122,8 +122,8 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     }
     
     @objc func switchToProfileViewController(parametrSender: Any) {
-        let profile = ProfileViewController()
-        self.navigationController?.pushViewController(profile, animated:  false)
+        let repoController = RepositorySearchController()
+        self.navigationController?.pushViewController(repoController, animated:  false)
         
     }
 }

@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 import Kingfisher
 
-extension ProfileViewController {
+extension RepositorySearchController {
     
     func searchRepo() {
         let sharedSession = URLSession.shared
         let repository = repositoryText.text
         let language = languageText.text
         var filter = "ascended"
+        let repoController = RepoTableViewController()
         
         if segmentView.selectedSegmentIndex == 1 {
             filter = "descended"
@@ -28,15 +29,26 @@ extension ProfileViewController {
         
         let request = URLRequest(url: url)
         
-        let dataTask = sharedSession.dataTask(with: request) { (data, respons, error) in
+        let dataTask = sharedSession.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
             
             guard let data = data else { return }
-            guard let text = String(data: data, encoding: .utf8) else { return }
-            print(text)
+            
+            do {
+                let searchRepo = try JSONDecoder().decode(repoSearch.self, from: data)
+                guard let repositories = searchRepo.repositories else { return }
+                
+                DispatchQueue.main.async {
+                    repoController.repositories = repositories
+                    self.navigationController?.pushViewController(repoController, animated:  false)
+                }
+                
+            } catch let error {
+                print(error)
+            }
         }
         dataTask.resume()
     }

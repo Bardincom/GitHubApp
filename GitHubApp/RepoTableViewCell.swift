@@ -1,9 +1,8 @@
 //
 //  RepoTableViewCell.swift
-//  GitHubApp
+//  
 //
-//  Created by Polina on 05.06.2020.
-//  Copyright © 2020 SergeevaPolina. All rights reserved.
+//  Created by Polina on 11.06.2020.
 //
 
 import UIKit
@@ -15,19 +14,15 @@ class RepoTableViewCell: UITableViewCell {
     
     private let avatarImage: UIImageView = {
         let image = UIImageView()
-       // image.backgroundColor = .green
+        image.layer.masksToBounds = true
         image.layer.cornerRadius = image.bounds.height / 2
-        image.clipsToBounds = true
-        let gitUrl = URL(string: "https://www.freepngimg.com/download/github/3-2-github-png-image.png")
-        image.kf.setImage(with: gitUrl)
         
         return image
     }()
     
     private let repoLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: avenirBoldFont, size: 19)
-        label.text = "repoLabel"
+        label.font = UIFont(name: avenirBoldFont, size: 17)
         label.textColor = .black
         
         return label
@@ -35,8 +30,7 @@ class RepoTableViewCell: UITableViewCell {
     
     private let userName: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: avenirFont, size: 17)
-        label.text = "userName"
+        label.font = UIFont(name: avenirFont, size: 15)
         label.textColor = .black
         
         return label
@@ -44,9 +38,8 @@ class RepoTableViewCell: UITableViewCell {
     
     private let repoDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: avenirFont, size: 17)
-        label.text = "here will be a description of the repository logolabel"
-        label.numberOfLines = 4
+        label.font = UIFont(name: avenirFont, size: 16)
+        label.numberOfLines = 3
         label.textColor = .black
         
         return label
@@ -69,34 +62,40 @@ class RepoTableViewCell: UITableViewCell {
         addSubview(userName)
     }
     
+    func configure(repo: Repository) {
+        self.repoLabel.text = repo.name
+        self.userName.text = repo.owner?.login
+        self.repoDescriptionLabel.text = repo.description
+        
+        let avatarURL = repo.owner?.avatarURL
+        avatarImage.layer.cornerRadius = bounds.height / 3.4
+        avatarImage.kf.setImage(with: avatarURL)
+    }
+    
     private func setupLayout() {
         repoLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(15)
-            $0.top.equalTo(contentView)
-            $0.bottom.equalTo(repoDescriptionLabel.snp.top).offset(12)
-           // $0.trailing.equalTo(userName.snp.leading).offset(50)
+            $0.leading.equalToSuperview().offset(20)
+            $0.top.equalTo(contentView).offset(5)
+            $0.bottom.equalTo(repoDescriptionLabel.snp.top).offset(-1)
+            $0.width.equalTo(200)
+            $0.height.equalTo(25)
         }
         
         repoDescriptionLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(15)
-            $0.bottom.equalTo(contentView)
-            $0.trailing.equalTo(avatarImage.snp.leading).inset(50)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(260)
         }
         
         userName.snp.makeConstraints {
             $0.top.equalTo(contentView)
-            $0.trailing.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(avatarImage.snp.top).offset(1)
         }
         
         avatarImage.snp.makeConstraints {
             $0.bottom.equalTo(contentView).inset(10)
-            $0.trailing.equalToSuperview().inset(15)
+            $0.trailing.equalToSuperview().inset(20)
             $0.height.width.equalTo(60)
- }
+        }
+    }
 }
-}
-
-
-
-
