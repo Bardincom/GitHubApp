@@ -102,6 +102,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         button.setTitle("Start search", for: .normal)
         button.titleLabel?.font = UIFont(name: avenirFont, size: 20)
         button.backgroundColor = .black
+        button.alpha = 0.5
         button.layer.cornerRadius = 6
         button.addTarget(self, action: #selector(tapSearchButton), for: .touchUpInside)
         
@@ -119,6 +120,11 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         setupLayout()
         self.languageText.delegate = self
         self.repositoryText.delegate = self
+        
+        setSearchButton(enabled: false)
+        
+        repositoryText.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        languageText.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         let gestureView = UITapGestureRecognizer(target: self, action: #selector(tapRootView(_:)))
         view.addGestureRecognizer(gestureView)
@@ -160,6 +166,23 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
     
     @objc func tapSearchButton(parametrSender: Any) {
         searchRepo()
+        searchButton.isEnabled = false
+    }
+    
+    private func setSearchButton(enabled: Bool) {
+        if enabled {
+            searchButton.alpha = 1.0
+            searchButton.isEnabled = true
+        } else {
+            searchButton.alpha = 0.5
+            searchButton.isEnabled = false
+        }
+    }
+    
+    @objc private func textFieldChanged() {
+        guard let repo = repositoryText.text, let lang = languageText.text else { return }
+        let formFilled = !(repo.isEmpty) && !(lang.isEmpty)
+        setSearchButton(enabled: formFilled)
     }
 }
 

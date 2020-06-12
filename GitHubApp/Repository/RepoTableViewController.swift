@@ -15,6 +15,7 @@ class RepoTableViewController: UIViewController {
     
     private let reuseIdentifier = "cellID"
     private let headerReuseIdentifier = "headerID"
+    var spinner: UIActivityIndicatorView!
     
     var repositories = [Repository]()
     
@@ -30,12 +31,9 @@ class RepoTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addSubviews()
     }
-}
-
-extension RepoTableViewController {
+    
     private func addSubviews() {
         self.view.addSubview(tableView)
     }
@@ -50,6 +48,7 @@ extension RepoTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? RepoTableViewCell else { return RepoTableViewCell() }
         cell.configure(repo: repositories[indexPath.row])
+        spinner?.stopAnimating()
         
         return cell
     }

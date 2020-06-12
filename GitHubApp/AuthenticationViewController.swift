@@ -124,7 +124,6 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     @objc func switchToProfileViewController(parametrSender: Any) {
         let repoController = RepositorySearchController()
         self.navigationController?.pushViewController(repoController, animated:  false)
-        
     }
 }
 
