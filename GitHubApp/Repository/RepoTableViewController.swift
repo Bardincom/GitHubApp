@@ -81,6 +81,12 @@ extension RepoTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let repoWebView = WKWebViewController()
+        let cell = repositories[indexPath.row]
+        
+        repoWebView.repositoryURL = cell.htmlURL
+        
+        self.navigationController?.pushViewController(repoWebView, animated:  false)
     }
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE1513C0248A88900090D675 /* RepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1513BF248A88900090D675 /* RepoTableViewController.swift */; };
+		CE4BADB424953B1100C260E7 /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BADB324953B1100C260E7 /* WKWebViewController.swift */; };
 		CE7C168A2491877100CD5174 /* RepoModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C16892491877100CD5174 /* RepoModels.swift */; };
 		CE7C168C2491889D00CD5174 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C168B2491889D00CD5174 /* RepoTableViewCell.swift */; };
 		CE7C168E249188BE00CD5174 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C168D249188BE00CD5174 /* Helpers.swift */; };
@@ -27,6 +28,7 @@
 		A467A5E0CEBC543754687301 /* Pods-GitHubApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubApp.debug.xcconfig"; path = "Target Support Files/Pods-GitHubApp/Pods-GitHubApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A766C3CE1CCC02725C8AAF69 /* Pods-GitHubApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubApp.release.xcconfig"; path = "Target Support Files/Pods-GitHubApp/Pods-GitHubApp.release.xcconfig"; sourceTree = "<group>"; };
 		CE1513BF248A88900090D675 /* RepoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewController.swift; sourceTree = "<group>"; };
+		CE4BADB324953B1100C260E7 /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
 		CE7C16892491877100CD5174 /* RepoModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModels.swift; sourceTree = "<group>"; };
 		CE7C168B2491889D00CD5174 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoTableViewCell.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/RepoTableViewCell.swift; sourceTree = "<absolute>"; };
 		CE7C168D249188BE00CD5174 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Helpers.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/Helpers.swift; sourceTree = "<absolute>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				CEA2563D247465E50078626B /* AuthenticationViewController.swift */,
+				CE4BADB324953B1100C260E7 /* WKWebViewController.swift */,
 				CE7C168D249188BE00CD5174 /* Helpers.swift */,
 				CE7C1686249184C800CD5174 /* Code */,
 				CE7C1685249184A300CD5174 /* Repository Search */,
@@ -253,6 +256,7 @@
 				CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */,
 				CE7C168E249188BE00CD5174 /* Helpers.swift in Sources */,
 				CEFEF044248586AD00E61E80 /* RepositorySearchController.swift in Sources */,
+				CE4BADB424953B1100C260E7 /* WKWebViewController.swift in Sources */,
 				CE7C168C2491889D00CD5174 /* RepoTableViewCell.swift in Sources */,
 				CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */,
 				CEFEF0482485885400E61E80 /* RepositorySearchMethod.swift in Sources */,
