@@ -245,6 +245,6 @@ extension RepositorySearchController {
             $0.leading.equalToSuperview().offset(leftOffset)
             $0.trailing.equalToSuperview().offset(rightOffset)
             $0.height.equalTo(buttonHeight)
-        }
+        } 
     }
 }
