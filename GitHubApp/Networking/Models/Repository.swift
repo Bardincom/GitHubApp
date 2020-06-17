@@ -21,21 +21,3 @@ struct Repository: Codable {
         case htmlURL = "html_url"
     }
 }
-
-struct Owner: Codable {
-    var login: String?
-    var avatarURL: URL?
-    
-    enum CodingKeys: String, CodingKey {
-        case login = "login"
-        case avatarURL = "avatar_url"
-    }
-}
-
-struct repoSearch: Codable {
-    var repositories: [Repository]?
-    
-    enum CodingKeys: String, CodingKey {
-        case repositories = "items"
-    }
-}

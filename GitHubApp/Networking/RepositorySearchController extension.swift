@@ -16,11 +16,11 @@ extension RepositorySearchController {
         let sharedSession = URLSession.shared
         let repository = repositoryText.text
         let language = languageText.text
-        var filter = "ascended"
+        var filter = "asc"
         let repoController = RepoTableViewController()
         
-        if segmentView.selectedSegmentIndex == 1 {
-            filter = "descended"
+        if segmentView.selectedSegmentIndex == 0 {
+            filter = "desc"
         }
         
         guard let url = URL(string:
@@ -38,7 +38,7 @@ extension RepositorySearchController {
             guard let data = data else { return }
             
             do {
-                let searchRepo = try JSONDecoder().decode(repoSearch.self, from: data)
+                let searchRepo = try JSONDecoder().decode(Search.self, from: data)
                 guard let repositories = searchRepo.repositories else { return }
                 
                 DispatchQueue.main.async {

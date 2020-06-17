@@ -12,6 +12,9 @@ import Kingfisher
 
 final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
     
+    var username: String?
+    var avatarURL: URL!
+    
     private let logoImage: UIImageView = {
         let logoImage = UIImageView()
         logoImage.layer.cornerRadius = logoImage.bounds.height / 2
@@ -65,7 +68,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         label.backgroundColor = .white
         label.text = "Hello!"
         label.textAlignment = .center
-        label.font = UIFont(name: avenirFont, size: 35)
+        label.font = UIFont(name: avenirFont, size: 25)
         label.numberOfLines = 1
         label.textColor = .black
         
@@ -75,9 +78,9 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
     private let searchLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
-        label.text = "Search repository"
+        label.text = "Search repository:"
         label.textAlignment = .center
-        label.font = UIFont(name: avenirFont, size: 30)
+        label.font = UIFont(name: avenirFont, size: 28)
         label.numberOfLines = 1
         label.textColor = .black
         
@@ -118,8 +121,15 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         
         addSubviews()
         setupLayout()
+        
         self.languageText.delegate = self
         self.repositoryText.delegate = self
+        
+        guard let username = username else { return }
+        helloLabel.text = "Hello, \(username)!"
+        logoImage.layer.cornerRadius = 55
+
+        logoImage.kf.setImage(with: avatarURL)
         
         setSearchButton(enabled: false)
         
@@ -166,7 +176,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
     
     @objc func tapSearchButton(parametrSender: Any) {
         searchRepo()
-        searchButton.isEnabled = false
+       // searchButton.isEnabled = false
     }
     
     private func setSearchButton(enabled: Bool) {
@@ -201,8 +211,8 @@ extension RepositorySearchController {
     private func setupLayout() {
         helloLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(110)
-            $0.leading.equalToSuperview().offset(70)
-            $0.trailing.equalToSuperview().offset(-70)
+            $0.leading.equalToSuperview().offset(30)
+            $0.trailing.equalToSuperview().offset(-30)
             $0.height.equalTo(40)
         }
         

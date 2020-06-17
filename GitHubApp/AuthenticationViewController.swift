@@ -20,7 +20,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         return logoImage
     }()
     
-    private let loginText: UITextField = {
+    let loginText: UITextField = {
         let loginText = UITextField()
         loginText.layer.borderWidth = 1
         loginText.layer.borderColor = UIColor.gray.cgColor
@@ -40,7 +40,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         return loginText
     }()
     
-    private let passwordText: UITextField = {
+    let passwordText: UITextField = {
         let passwordText = UITextField()
         passwordText.layer.borderWidth = 1
         passwordText.layer.borderColor = UIColor.gray.cgColor
@@ -60,7 +60,7 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         return passwordText
     }()
     
-    private let loginButton: UIButton = {
+     let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Login", for: .normal)
         button.titleLabel?.font = UIFont(name: avenirFont, size: 20)
@@ -82,6 +82,11 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         setupLayout()
         self.passwordText.delegate = self
         self.loginText.delegate = self
+        
+        setloginButton(enabled: false)
+        
+        passwordText.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        loginText.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         let gestureView = UITapGestureRecognizer(target: self, action: #selector(tapRootView(_:)))
         view.addGestureRecognizer(gestureView)
@@ -122,9 +127,24 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     }
     
     @objc func switchToProfileViewController(parametrSender: Any) {
-        let repoController = RepositorySearchController()
-        self.navigationController?.pushViewController(repoController, animated:  false)
-    }
+        singIn()
+   }
+    
+    private func setloginButton(enabled: Bool) {
+          if enabled {
+              loginButton.alpha = 1.0
+              loginButton.isEnabled = true
+          } else {
+              loginButton.alpha = 0.5
+              loginButton.isEnabled = false
+          }
+      }
+    
+    @objc private func textFieldChanged() {
+         guard let repo = loginText.text, let lang = passwordText.text else { return }
+         let formFilled = !(repo.isEmpty) && !(lang.isEmpty)
+         setloginButton(enabled: formFilled)
+     }
 }
 
 extension AuthenticationViewController {

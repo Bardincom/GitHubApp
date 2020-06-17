@@ -14,7 +14,6 @@ final class WKWebViewController: UIViewController, WKUIDelegate, WKNavigationDel
     
     var repositoryURL: String!
     var webView: WKWebView!
-    var progressView: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
