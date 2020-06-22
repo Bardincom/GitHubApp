@@ -13,6 +13,7 @@ struct Owner: Codable {
     var avatarURL: URL?
     
     enum CodingKeys: String, CodingKey {
+        // логин будет по дефолту, можно не задавать ему ключ
         case login = "login"
         case avatarURL = "avatar_url"
     }

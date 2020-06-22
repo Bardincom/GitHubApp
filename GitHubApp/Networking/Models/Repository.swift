@@ -15,6 +15,7 @@ struct Repository: Codable {
     var owner: Owner?
     
     enum CodingKeys: String, CodingKey {
+        // все кейсы, кроме htmlURL будут такими по дефолту, поэтому можно удалить из этого перечисления
         case name = "name"
         case description = "description"
         case owner = "owner"

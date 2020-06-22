@@ -11,7 +11,7 @@ import SnapKit
 import Kingfisher
 
 final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
-    
+    // расставь private где это нужно
     var username: String?
     var avatarURL: URL!
     
@@ -19,6 +19,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         let logoImage = UIImageView()
         logoImage.layer.cornerRadius = logoImage.bounds.height / 2
         logoImage.clipsToBounds = true
+        // Адрес в константу
         let gitUrl = URL(string: "https://www.freepngimg.com/download/github/3-2-github-png-image.png")
         logoImage.kf.setImage(with: gitUrl)
         
@@ -32,6 +33,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         repositoryText.layer.cornerRadius = 6
         repositoryText.attributedPlaceholder = NSAttributedString(string: "repository name",
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        // высоту в константу
         repositoryText.leftView = UIView(frame: CGRect(x: 0,
                                                        y: 0,
                                                        width: 10,
@@ -51,6 +53,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         languageText.layer.cornerRadius = 6
         languageText.attributedPlaceholder = NSAttributedString(string: "language",
                                                                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        // высоту в константу
         languageText.leftView = UIView(frame: CGRect(x: 0,
                                                      y: 0,
                                                      width: 10,
@@ -89,6 +92,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
     
     let segmentView: UISegmentedControl = {
         let segment = UISegmentedControl(items: ["ascended", "descended"])
+        // словарb можно создать отдельными константами с типом [NSAttributedString.Key: Any]
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black,
                                         NSAttributedString.Key.font: UIFont(name: avenirFont, size: 17) as Any], for: .selected)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -121,7 +125,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         
         addSubviews()
         setupLayout()
-        
+        // можно без селф
         self.languageText.delegate = self
         self.repositoryText.delegate = self
         
@@ -176,6 +180,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
     
     @objc func tapSearchButton(parametrSender: Any) {
         searchRepo()
+        // этот код тебе нужен?
        // searchButton.isEnabled = false
     }
     
@@ -199,6 +204,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
 extension RepositorySearchController {
     
     private func addSubviews() {
+        // можно без селф
         self.view.addSubview(helloLabel)
         self.view.addSubview(logoImage)
         self.view.addSubview(repositoryText)

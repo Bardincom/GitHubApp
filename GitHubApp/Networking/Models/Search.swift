@@ -12,6 +12,7 @@ struct Search: Codable {
     var repositories: [Repository]?
     
     enum CodingKeys: String, CodingKey {
+        // почему бы не оставить айтемс, тогда не придется создавать это перечисление
         case repositories = "items"
     }
 }
