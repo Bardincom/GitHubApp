@@ -12,6 +12,8 @@ import Kingfisher
 
 final class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     
+    let keychain = KeychainStorage()
+
     private let logoImage: UIImageView = {
         let gitUrl = URL(string: "https://mainacademy.ua/wp-content/uploads/2019/02/github-logo.png")
         let logoImage = UIImageView()
@@ -84,12 +86,21 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         self.loginText.delegate = self
         
         setloginButton(enabled: false)
-        
+                
         passwordText.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         loginText.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         let gestureView = UITapGestureRecognizer(target: self, action: #selector(tapRootView(_:)))
         view.addGestureRecognizer(gestureView)
+
+       
+        if let jsonData = keychain.readAnyAccount() {
+                   let decoder = JSONDecoder()
+            guard let account = (try? decoder.decode(Account.self, from: jsonData)) else { return }
+         
+                authenticateUser(account: account)
+        }
+        
     }
     
     func setKeyboardNotification() {
@@ -183,7 +194,6 @@ extension AuthenticationViewController {
             $0.leading.equalToSuperview().offset(leftOffset)
             $0.trailing.equalToSuperview().offset(rightOffset)
             $0.height.equalTo(buttonHeight)
-            
         }
     }
 }

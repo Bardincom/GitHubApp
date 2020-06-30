@@ -12,16 +12,17 @@
 		CE61EDCF249A96EC00B25FF7 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61EDCE249A96EC00B25FF7 /* Owner.swift */; };
 		CE61EDD1249A971D00B25FF7 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61EDD0249A971D00B25FF7 /* Search.swift */; };
 		CE61EDD3249A979600B25FF7 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61EDD2249A979600B25FF7 /* Account.swift */; };
+		CE61EDD824A1071B00B25FF7 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61EDD724A1071B00B25FF7 /* KeychainStorage.swift */; };
 		CE7C168A2491877100CD5174 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C16892491877100CD5174 /* Repository.swift */; };
-		CE7C168C2491889D00CD5174 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C168B2491889D00CD5174 /* RepoTableViewCell.swift */; };
-		CE7C168E249188BE00CD5174 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C168D249188BE00CD5174 /* Constants.swift */; };
 		CE8C2031249A313400F02A43 /* AuthenticationViewController extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C2030249A313400F02A43 /* AuthenticationViewController extension.swift */; };
 		CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA256292471BD330078626B /* AppDelegate.swift */; };
 		CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2562B2471BD330078626B /* SceneDelegate.swift */; };
 		CEA256312471BD330078626B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA2562F2471BD330078626B /* Main.storyboard */; };
 		CEA256332471BD3A0078626B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA256322471BD3A0078626B /* Assets.xcassets */; };
 		CEA256362471BD3A0078626B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA256342471BD3A0078626B /* LaunchScreen.storyboard */; };
-		CEA2563E247465E50078626B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2563D247465E50078626B /* AuthenticationViewController.swift */; };
+		CEE3761D24A7ACDF00FE6119 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE3761C24A7ACDF00FE6119 /* AuthenticationViewController.swift */; };
+		CEE3761F24A7AD0E00FE6119 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE3761E24A7AD0D00FE6119 /* RepoTableViewCell.swift */; };
+		CEE3762124A7AD7200FE6119 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE3762024A7AD7200FE6119 /* Constants.swift */; };
 		CEFEF044248586AD00E61E80 /* RepositorySearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEF043248586AD00E61E80 /* RepositorySearchController.swift */; };
 		CEFEF0482485885400E61E80 /* RepositorySearchController extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFEF0472485885400E61E80 /* RepositorySearchController extension.swift */; };
 		E64A09655BC23823474D52AD /* Pods_GitHubApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8419E22B280D47F756E36D05 /* Pods_GitHubApp.framework */; };
@@ -36,9 +37,8 @@
 		CE61EDCE249A96EC00B25FF7 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		CE61EDD0249A971D00B25FF7 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CE61EDD2249A979600B25FF7 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		CE61EDD724A1071B00B25FF7 /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		CE7C16892491877100CD5174 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		CE7C168B2491889D00CD5174 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RepoTableViewCell.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/RepoTableViewCell.swift; sourceTree = "<absolute>"; };
-		CE7C168D249188BE00CD5174 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/Constants.swift; sourceTree = "<absolute>"; };
 		CE8C2030249A313400F02A43 /* AuthenticationViewController extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationViewController extension.swift"; sourceTree = "<group>"; };
 		CEA256262471BD330078626B /* GitHubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA256292471BD330078626B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +47,9 @@
 		CEA256322471BD3A0078626B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEA256352471BD3A0078626B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEA256372471BD3A0078626B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEA2563D247465E50078626B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationViewController.swift; path = /Users/user/Desktop/Netology/GitHubApp/GitHubApp/AuthenticationViewController.swift; sourceTree = "<absolute>"; };
+		CEE3761C24A7ACDF00FE6119 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		CEE3761E24A7AD0D00FE6119 /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		CEE3762024A7AD7200FE6119 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CEFEF043248586AD00E61E80 /* RepositorySearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySearchController.swift; sourceTree = "<group>"; };
 		CEFEF0472485885400E61E80 /* RepositorySearchController extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepositorySearchController extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1513BF248A88900090D675 /* RepoTableViewController.swift */,
-				CEA2563D247465E50078626B /* AuthenticationViewController.swift */,
+				CEE3761C24A7ACDF00FE6119 /* AuthenticationViewController.swift */,
 				CEFEF043248586AD00E61E80 /* RepositorySearchController.swift */,
 			);
 			path = Controllers;
@@ -107,14 +109,23 @@
 		CE61EDD5249A98F900B25FF7 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CE7C168B2491889D00CD5174 /* RepoTableViewCell.swift */,
+				CEE3761E24A7AD0D00FE6119 /* RepoTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		CE61EDD624A106D700B25FF7 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				CE61EDD724A1071B00B25FF7 /* KeychainStorage.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		CE7C1686249184C800CD5174 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				CEE3762024A7AD7200FE6119 /* Constants.swift */,
 				CEA256292471BD330078626B /* AppDelegate.swift */,
 				CEA2562B2471BD330078626B /* SceneDelegate.swift */,
 			);
@@ -142,10 +153,10 @@
 		CEA256282471BD330078626B /* GitHubApp */ = {
 			isa = PBXGroup;
 			children = (
-				CE7C168D249188BE00CD5174 /* Constants.swift */,
 				CE7C1686249184C800CD5174 /* Code */,
 				CE61EDD5249A98F900B25FF7 /* Cells */,
 				CE61EDD4249A98D300B25FF7 /* Controllers */,
+				CE61EDD624A106D700B25FF7 /* Keychain */,
 				CE61EDCC249A913200B25FF7 /* Networking */,
 				CEA2562F2471BD330078626B /* Main.storyboard */,
 				CEA256322471BD3A0078626B /* Assets.xcassets */,
@@ -279,16 +290,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEE3762124A7AD7200FE6119 /* Constants.swift in Sources */,
+				CEE3761F24A7AD0E00FE6119 /* RepoTableViewCell.swift in Sources */,
+				CEE3761D24A7ACDF00FE6119 /* AuthenticationViewController.swift in Sources */,
 				CE61EDD1249A971D00B25FF7 /* Search.swift in Sources */,
 				CE1513C0248A88900090D675 /* RepoTableViewController.swift in Sources */,
+				CE61EDD824A1071B00B25FF7 /* KeychainStorage.swift in Sources */,
 				CE61EDCF249A96EC00B25FF7 /* Owner.swift in Sources */,
-				CEA2563E247465E50078626B /* AuthenticationViewController.swift in Sources */,
 				CEA2562A2471BD330078626B /* AppDelegate.swift in Sources */,
 				CE8C2031249A313400F02A43 /* AuthenticationViewController extension.swift in Sources */,
-				CE7C168E249188BE00CD5174 /* Constants.swift in Sources */,
 				CEFEF044248586AD00E61E80 /* RepositorySearchController.swift in Sources */,
 				CE4BADB424953B1100C260E7 /* WKWebViewController.swift in Sources */,
-				CE7C168C2491889D00CD5174 /* RepoTableViewCell.swift in Sources */,
 				CEA2562C2471BD330078626B /* SceneDelegate.swift in Sources */,
 				CEFEF0482485885400E61E80 /* RepositorySearchController extension.swift in Sources */,
 				CE7C168A2491877100CD5174 /* Repository.swift in Sources */,

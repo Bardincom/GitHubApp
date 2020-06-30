@@ -19,8 +19,6 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         let logoImage = UIImageView()
         logoImage.layer.cornerRadius = logoImage.bounds.height / 2
         logoImage.clipsToBounds = true
-        let gitUrl = URL(string: "https://www.freepngimg.com/download/github/3-2-github-png-image.png")
-        logoImage.kf.setImage(with: gitUrl)
         
         return logoImage
     }()
@@ -122,13 +120,13 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         addSubviews()
         setupLayout()
         
-        self.languageText.delegate = self
-        self.repositoryText.delegate = self
+        languageText.delegate = self
+        repositoryText.delegate = self
         
         guard let username = username else { return }
         helloLabel.text = "Hello, \(username)!"
         logoImage.layer.cornerRadius = 55
-
+        
         logoImage.kf.setImage(with: avatarURL)
         
         setSearchButton(enabled: false)
@@ -176,7 +174,6 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
     
     @objc func tapSearchButton(parametrSender: Any) {
         searchRepo()
-       // searchButton.isEnabled = false
     }
     
     private func setSearchButton(enabled: Bool) {
@@ -199,13 +196,13 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
 extension RepositorySearchController {
     
     private func addSubviews() {
-        self.view.addSubview(helloLabel)
-        self.view.addSubview(logoImage)
-        self.view.addSubview(repositoryText)
-        self.view.addSubview(languageText)
-        self.view.addSubview(searchButton)
-        self.view.addSubview(searchLabel)
-        self.view.addSubview(segmentView)
+        view.addSubview(helloLabel)
+        view.addSubview(logoImage)
+        view.addSubview(repositoryText)
+        view.addSubview(languageText)
+        view.addSubview(searchButton)
+        view.addSubview(searchLabel)
+        view.addSubview(segmentView)
     }
     
     private func setupLayout() {
