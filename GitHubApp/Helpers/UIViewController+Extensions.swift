@@ -13,7 +13,7 @@ extension UIViewController {
     /// Настройка клавиатуры
     
     func setKeyboardNotification() {
-        if UIScreen.main.bounds.size.height <= Sizes.screenheight {
+        if UIScreen.main.bounds.size.height <= Size.screenheight {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(keyboardWillShow),
                                                    name: UIResponder.keyboardWillShowNotification,

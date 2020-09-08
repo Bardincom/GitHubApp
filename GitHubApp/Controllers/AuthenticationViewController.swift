@@ -11,11 +11,11 @@ import Kingfisher
 import LocalAuthentication
 
 final class AuthenticationViewController: UIViewController, UITextFieldDelegate {
- 
-// MARK: - Setup UI elements
+    
+    // MARK: - Setup UI elements
     
     private let logoImage: UIImageView = {
-        let gitUrl = URL(string: Links.imageLogo)
+        let gitUrl = URL(string: Link.imageLogo)
         let logoImage = UIImageView()
         logoImage.kf.setImage(with: gitUrl)
         return logoImage
@@ -103,23 +103,23 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         let repoSearchController = RepositorySearchController()
         self.loginButton.isEnabled = false
         guard let username = loginText.text,
-            let password = passwordText.text else { return }
+              let password = passwordText.text else { return }
+        
         SessionProvider.shared.signIn(username: username, password: password) { [weak self] result in
-            guard let self = self else { return }
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
                     repoSearchController.username = user.login
                     repoSearchController.avatarURL = user.avatarURL
-                    self.navigationController?.pushViewController(repoSearchController, animated: false)
-                }
+                    self?.navigationController?.pushViewController(repoSearchController, animated: false)
+                 }
             case .fail( _):
-                print("errrr")
+                self?.showAlert()
             }
         }
     }
     
-  private func authenticateUser(account: Account) {
+    private func authenticateUser(account: Account) {
         let authenticationContext = LAContext()
         setupAuthenticationContext(context: authenticationContext)
         let reason = "Fast and safe authentication in your app"
@@ -158,18 +158,28 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
     }
     
     private func setupBioAuthenticationSettings() {
-           if let jsonData = KeychainStorage.shared.readAnyAccount() {
-               let decoder = JSONDecoder()
-               guard let account = (try? decoder.decode(Account.self, from: jsonData)) else { return }
-               authenticateUser(account: account)
-           }
-       }
+        if let jsonData = KeychainStorage.shared.readAnyAccount() {
+            let decoder = JSONDecoder()
+            guard let account = (try? decoder.decode(Account.self, from: jsonData)) else { return }
+            authenticateUser(account: account)
+        }
+    }
     
     private func setupAuthenticationContext(context: LAContext) {
-        context.localizedReason = "Use for fast and safe authentication in your app"
-        context.localizedCancelTitle = "Cancel"
-        context.localizedFallbackTitle = "Enter password"
+        context.localizedReason = Context.localizedReason
+        context.localizedCancelTitle = Context.localizedCancelTitle
+        context.localizedFallbackTitle = Context.localizedFallbackTitle
         context.touchIDAuthenticationAllowableReuseDuration = 600
+    }
+    
+    private func showAlert() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: Alert.title, message: Alert.messege, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: Alert.ok, style: .default)
+            
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
     }
 }
 

@@ -112,6 +112,7 @@ final class RepositorySearchController: UIViewController, UITextFieldDelegate  {
         setKeyboardNotification()
         addSubviews()
         setupLayout()
+        setupUI() 
         setSearchButton(enabled: false)
         setupTextFieldSettings()
     }
