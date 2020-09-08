@@ -81,7 +81,6 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         setupBioAuthenticationSettings()
     }
     
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return false
@@ -104,11 +103,17 @@ final class AuthenticationViewController: UIViewController, UITextFieldDelegate 
         self.loginButton.isEnabled = false
         guard let username = loginText.text,
               let password = passwordText.text else { return }
-        
+        let account = Account(username: username, password: password)
         SessionProvider.shared.signIn(username: username, password: password) { [weak self] result in
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
+                    let result = KeychainStorage.shared.saveAccount(account: account)
+                    if result, let savedPassword = KeychainStorage.shared.readAnyAccount() {
+                        print("added to Keychain \(username): \(password) // \(savedPassword)")
+                    } else {
+                        print("can't save password")
+                    }
                     repoSearchController.username = user.login
                     repoSearchController.avatarURL = user.avatarURL
                     self?.navigationController?.pushViewController(repoSearchController, animated: false)

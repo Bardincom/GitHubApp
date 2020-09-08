@@ -69,7 +69,7 @@ final class SessionProvider  {
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 401 {
                     
-                    let error = statusCodeError.reason(reason: "httpstatus code \(httpResponse.statusCode) - Unauthorized")
+                    let error = statusCodeError.reason(reason: "http status code \(httpResponse.statusCode) - Unauthorized")
                     completionHandler(.fail(error))
                     return
                 } else {
