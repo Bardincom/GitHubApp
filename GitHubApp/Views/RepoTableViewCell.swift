@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Foundation
 import SpriteKit
 import Kingfisher
 
@@ -22,7 +21,7 @@ class RepoTableViewCell: UITableViewCell {
     
     private let repoLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: avenirBoldFont, size: 17)
+        label.font = UIFont(name: Font.avenirBold, size: 17)
         label.textColor = .black
         
         return label
@@ -30,7 +29,7 @@ class RepoTableViewCell: UITableViewCell {
     
     private let userName: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: avenirFont, size: 15)
+        label.font = UIFont(name: Font.avenir, size: 15)
         label.textColor = .black
         
         return label
@@ -38,7 +37,7 @@ class RepoTableViewCell: UITableViewCell {
     
     private let repoDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: avenirFont, size: 16)
+        label.font = UIFont(name: Font.avenir, size: 16)
         label.numberOfLines = 3
         label.textColor = .black
         

@@ -6,11 +6,11 @@
 //  Copyright © 2020 SergeevaPolina. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class KeychainStorage {
     
+    static let shared = KeychainStorage()
     private let service = "GitHubApp"
     
     private func keychainQuery() -> [String : AnyObject] {
@@ -18,7 +18,6 @@ class KeychainStorage {
         query[kSecClass as String] = kSecClassGenericPassword
         query[kSecAttrAccessible as String] = kSecAttrAccessibleWhenUnlocked
         query[kSecAttrService as String] = service as AnyObject
-        
         return query
     }
     

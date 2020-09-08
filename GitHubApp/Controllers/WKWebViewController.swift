@@ -6,7 +6,6 @@
 //  Copyright © 2020 SergeevaPolina. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import WebKit
 
@@ -25,16 +24,12 @@ final class WKWebViewController: UIViewController, WKUIDelegate, WKNavigationDel
     }
     
     override func loadView() {
-        
         let source = "document.body.style.background = \"#77B3FF\";"
         let userScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-        
         let userContentController = WKUserContentController()
         userContentController.addUserScript(userScript)
-        
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = userContentController
-        
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
         webView.navigationDelegate = self

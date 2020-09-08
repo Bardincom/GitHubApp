@@ -6,25 +6,21 @@
 //  Copyright © 2020 SergeevaPolina. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import SnapKit
 import Kingfisher
 
 class RepoTableViewController: UIViewController {
     
-    private let reuseIdentifier = "cellID"
-    private let headerReuseIdentifier = "headerID"
     private var spinner: UIActivityIndicatorView!
     var repositories = [Repository]()
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: Name.cellID)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.frame = view.frame
-        
         return tableView
     }()
     
@@ -38,6 +34,8 @@ class RepoTableViewController: UIViewController {
     }
 }
 
+// MARK: - DataSource & Delegate
+
 extension RepoTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,7 +44,7 @@ extension RepoTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: reuseIdentifier,
+            withIdentifier: Name.cellID,
             for: indexPath
             ) as? RepoTableViewCell else { return RepoTableViewCell() }
         cell.configure(repo: repositories[indexPath.row])
@@ -64,8 +62,8 @@ extension RepoTableViewController: UITableViewDelegate {
         let label = UILabel(frame: CGRect(x: 10, y: 0,
                                           width: tableView.frame.width - 10,
                                           height: 60))
-        label.font = UIFont(name: avenirBoldFont, size: 21)
-        label.text = "Repositories found: \(repositories.count) "
+        label.font = UIFont(name: Font.avenirBold, size: 21)
+        label.text = "\(Text.repoFound) \(repositories.count) "
         
         view.addSubview(label)
         view.sizeToFit()
@@ -85,9 +83,7 @@ extension RepoTableViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let repoWebView = WKWebViewController()
         let cell = repositories[indexPath.row]
-        
         repoWebView.repositoryURL = cell.htmlURL
-        
         self.navigationController?.pushViewController(repoWebView, animated:  false)
     }
 }
