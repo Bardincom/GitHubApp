@@ -7,6 +7,4 @@
 - Биометрическая аутентификация c момощью Touch ID/Face ID;
 - Поиск аутенфицированными пользователями репозиториев в Github и просмотр их в WKWebView;
 
-![Alt-текст](https://yadi.sk/i/AAjnJmsp9AYsfg )
-
-
+![GitHubApp Demo](https://github.com/pollymorphine/hello-world/blob/master/iphone.gif)
